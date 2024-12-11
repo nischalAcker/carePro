@@ -1,12 +1,15 @@
-import ackoLogo from './assets/logo.svg'
-import { Wrapper } from './components/Wrapper'
-
+import { useState } from 'react';
 import { Box } from '@acko-tech/building-blocks.ui.common';
-import { PrimaryButton } from '@acko-tech/building-blocks.ui.button';
+
+import { Wrapper } from './components/Wrapper'
 import './App.css'
+import { Screen } from './components/Screen';
+import BottomNav from './components/BottomNav';
 
 
 function App() {
+  const [screenValue, setScreenValue] = useState<number>(0);
+
   return (
     <Wrapper>
       <Box style={{
@@ -14,12 +17,12 @@ function App() {
         height: '100%',
         justifyContent: "space-between",
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
       }}>
-        <a href="https://acko.com" target="_blank">
-          <img src={ackoLogo} className="logo_acko" alt="Logo" />
-        </a>
-        <PrimaryButton>Less go!</PrimaryButton>
+        {/* Screen */}
+        <Screen value={screenValue} />
+        {/* Bottom Navigation */}
+        <BottomNav value={screenValue} setValue={setScreenValue} />
       </Box>
     </Wrapper>
   )
