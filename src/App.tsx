@@ -1,28 +1,24 @@
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Box } from '@acko-tech/building-blocks.ui.common';
 
 import { Wrapper } from './components/Wrapper'
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 import './App.css'
-import { Screen } from './components/Screen';
-import BottomNav from './components/BottomNav';
+import './fonts.css';
 
-
-function App() {
-  const [screenValue, setScreenValue] = useState<number>(0);
-
+const App = () => {
   return (
     <Wrapper>
-      <Box style={{
-        display: "flex",
-        height: '100%',
-        justifyContent: "space-between",
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}>
-        {/* Screen */}
-        <Screen value={screenValue} />
-        {/* Bottom Navigation */}
-        <BottomNav value={screenValue} setValue={setScreenValue} />
+      <Box className='container'>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </Box>
     </Wrapper>
   )
