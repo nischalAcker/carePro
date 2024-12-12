@@ -1,17 +1,21 @@
-
-import { Heading } from '../../components/Heading';
-import ackoLogo from '../../assets/logo.svg'
-import '../../App.css'
+import '../../App.css';
+import DocumentUpload from '../../components/Upload';
 
 const Feed = () => {
   return (
     <div style={{ padding: '16px' }}>
-      <a href="https://acko.com" target="_blank">
-        <img src={ackoLogo} className="logo_acko" alt="Logo" />
-      </a>
-      <Heading>Your Feed!</Heading>
+      <DocumentUpload
+        title=""
+        subtitle=""
+        handleDeleteFile={() => {}}
+        handleAddFile={(file) => {
+          console.log(file, 'val');
+        }}
+        document_category="retail_porting_existing_policy"
+        files={[]}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default Feed;
