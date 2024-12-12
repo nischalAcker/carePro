@@ -7,9 +7,11 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import Educate from './pages/Educate';
+import Feed from './pages/Feed';
+import Guide from './pages/Guide';
+
 import './App.css'
 import './fonts.css';
-import Feed from './pages/Feed';
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/educate" element={<Educate />} />
           <Route path="/feed" element={<Feed />} />
+          <Route path="/guide" element={<Guide />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Box>

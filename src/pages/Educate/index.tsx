@@ -182,9 +182,15 @@ const Step3 = ({ prevStep, progress }: {  prevStep: any, progress: number }) => 
       navigate('/feed');
     }
 
-
     return (
-       <div style={{flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between'
+          }}
+      >
           <div className="back-nav">
             <button onClick={prevStep} className="back-button">
               <ChevronLeft className="back-icon" />
