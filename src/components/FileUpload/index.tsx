@@ -1,6 +1,7 @@
 // FileUpload.tsx
-import React, { useState, ChangeEvent } from 'react';
-import '../../FileUpload.css';
+import React, { ChangeEvent, useRef } from 'react';
+import './style.css';
+import UploadDocumentIcon from '../../icons/uploadDocument';
 
 interface FileUploadProps {
   proposalId: string;
@@ -18,9 +19,7 @@ const MAX_FILE_SIZE = 15 * 1024 * 1024; // 10MB in bytes
 //const ALLOWED_TYPES = ['application/pdf'];
 
 const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, onUploadError }) => {
-  const [file, setFile] = useState<File | null>(null);
-  const [uploading, setUploading] = useState<boolean>(false);
-  const [progress, setProgress] = useState<number>(0);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validateFile = (file: File): boolean => {
     // Check if it's a PDF by file extension regardless of MIME type
@@ -40,9 +39,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, on
   };
 
   const uploadFile = async (file: File): Promise<void> => {
-    setUploading(true);
-    setProgress(0);
-
     try {
       const documentRequest = {
         lob: 'health',
@@ -89,16 +85,12 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, on
       }
 
       const result = await response.json();
-      console.log(result);
-      setProgress(100);
+      console.log('uploaded document: ', result);
       onUploadSuccess?.(file);
     } catch (error) {
       if (error instanceof Error) {
         onUploadError?.(error);
       }
-      setFile(null);
-    } finally {
-      setUploading(false);
     }
   };
 
@@ -107,31 +99,34 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, on
       const selectedFile = e.target.files[0];
 
       if (validateFile(selectedFile)) {
-        setFile(selectedFile);
         uploadFile(selectedFile);
       }
     }
   };
 
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+
   return (
-    <div className="upload-container">
-      <div className="upload-section">
-        <input type="file" onChange={handleFileInput} accept=".pdf" disabled={uploading} className="file-input" />
-
-        {uploading && (
-          <div className="upload-progress">
-            <div className="progress-bar" style={{ width: `${progress}%` }} />
-            <span>Uploading... {progress}%</span>
-          </div>
-        )}
+    <div className="report-card">
+      <div className="upload-icon">
+        <UploadDocumentIcon />
       </div>
-
-      {file && (
-        <div className="file-info">
-          <p>Selected file: {file.name}</p>
-          <p>Size: {(file.size / (1024 * 1024)).toFixed(2)} MB</p>
-        </div>
-      )}
+      <h3>We don’t have your medical reports right now</h3>
+      <p>
+        Your <span className="highlight">profile is locked right now</span>, upload medical reports to see your health trends
+      </p>
+      <button className="upload-button" onClick={handleButtonClick}>Upload reports</button>
+      <input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
+        onChange={handleFileInput}
+      />
     </div>
   );
 };

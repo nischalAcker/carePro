@@ -1,13 +1,23 @@
-import { Heading } from '../../components/Heading';
-
-import ackoLogo from '../../assets/logo.svg';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState } from 'react';
 import '../../App.css';
-import FileUpload from '../../components/FileUpload';
+import FeedPositive from './FeedPositive';
+import FeedNegative from './FeedNegative';
+import Loader from '../../components/Loader';
 
 
 const Feed = () => {
+  const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const areFilesUploaded = uploadedFiles.length > 0;
+
   const handleUploadSuccess = (files: File): void => {
-    console.log('Upload successful:', files);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setUploadedFiles((prevFiles) => [...prevFiles, files]);
+    }, 6000);
   };
 
   const handleUploadError = (error: Error): void => {
@@ -15,19 +25,15 @@ const Feed = () => {
   };
 
   return (
-    <div style={{ padding: '16px' }}>
-      <a href="https://acko.com" target="_blank">
-        <img src={ackoLogo} className="logo_acko" alt="Logo" />
-      </a>
-      <Heading>Your Feed!</Heading>
-      <div>
-        <FileUpload
-          proposalId="0b9d71cd-bf8d-4cea-bf7e-7a0226a91bd5"
-          onUploadSuccess={handleUploadSuccess}
-          onUploadError={handleUploadError}
-        />
-      </div>
-    </div>
+    <>
+      {
+        loading
+        ? <Loader />
+        :  areFilesUploaded
+          ? <FeedPositive />
+          : <FeedNegative handleUploadSuccess={handleUploadSuccess} handleUploadError={handleUploadError} />
+      }
+    </>
   );
 };
 

@@ -1,0 +1,67 @@
+.report-card {
+  width: 320px;
+  padding: 24px 16px;
+  margin-top: 62px;
+  border: 1px solid #E8E8E8;
+  border-radius: 16px;
+  box-shadow: 0px 9px 19px 0px #0000001A;
+  text-align: center;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.upload-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+h3 {
+  font-family: Euclid Circular B, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 24px;
+  color: #121212;
+}
+
+p {
+  font-family: Euclid Circular B, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+  margin-top: 12px;
+  color: #121212;
+}
+
+p .highlight {
+  color: #D83D37;/* Adjust this to match the red in the design */
+  font-weight: 700;
+}
+
+.upload-button {
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: Euclid Circular B, sans-serif;
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.upload-button:hover {
+  background-color: #333;
+}
+
