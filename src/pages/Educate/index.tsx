@@ -152,7 +152,8 @@ const Step2 = ({ nextStep, prevStep, progress  }: { nextStep: any, prevStep: any
               fontSize: '24px',
               fontWeight: 600,
               lineHeight: '32px',
-              textAlign: 'left'
+              textAlign: 'left',
+              marginBottom: '32px',
             }}
            >
             All in one place!
