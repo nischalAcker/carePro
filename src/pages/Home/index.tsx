@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+
 import CareIcon from '../../icons/care';
 import ChevronLeft from '../../icons/chevronLeft';
 import DocumentIcon from '../../icons/document';
@@ -5,12 +11,34 @@ import PersonalizeIcon from '../../icons/personalize';
 import './style.css';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const goBack = () => {
+    navigate(-1);
+  }
+
+  const toggleDrawer = (open: any) => (event: any) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
+    }
+    setIsDrawerOpen(open);
+  };
+
+  const DrawerContent = () => (
+    <span>&nbsp;</span>
+  );
+
   return (
     <div className="landing-container">
       <div className='hero-section'>
         {/* Back Navigation */}
         <div className="back-nav">
-          <button className="back-button">
+          <button onClick={goBack} className="back-button">
             <ChevronLeft className="back-icon" />
           </button>
         </div>
@@ -67,7 +95,7 @@ const Home = () => {
       {/* CTA Button */}
       <footer className='footer'>
         <div className='cta-container'>
-          <button className="cta-button">
+          <button onClick={toggleDrawer(true)} className="cta-button">
             Get started
           </button>
         </div>
@@ -76,6 +104,33 @@ const Home = () => {
           <div className='bottom-handle' />
         </div>
       </footer>
+
+      {/* Drawer */}
+      <SwipeableDrawer
+        anchor="bottom"
+        open={isDrawerOpen}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+        disableSwipeToOpen={false}
+        PaperProps={{
+          sx: {
+            width: "360px",
+            height: '440px',
+            margin: '8px auto',
+            backgroundColor: "rgba(255, 255, 255, 1)",
+            borderTop: '2px solid #F0F0F0',
+            borderTopLeftRadius: '24px',
+            borderTopRightRadius: '24px',
+          },
+        }}
+        ModalProps={{
+          BackdropProps: {
+            style: { display: "none" },
+          },
+        }}
+      >
+        <DrawerContent />
+      </SwipeableDrawer>
     </div>
   )
 }
