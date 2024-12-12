@@ -4,7 +4,6 @@ import '../../FileUpload.css';
 
 interface FileUploadProps {
   proposalId: string;
-  userId: string;
   onUploadSuccess?: (file: File) => void;
   onUploadError?: (error: Error) => void;
 }
@@ -18,7 +17,7 @@ export interface UploadResponse {
 const MAX_FILE_SIZE = 15 * 1024 * 1024; // 10MB in bytes
 const ALLOWED_TYPES = ['application/pdf'];
 
-const FileUpload: React.FC<FileUploadProps> = ({ proposalId, userId, onUploadSuccess, onUploadError }) => {
+const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, onUploadError }) => {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
@@ -47,7 +46,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, userId, onUploadSuc
         entity_name: 'proposal',
         entity_id: proposalId,
         attribute: 'medical_documents',
-        modified_by: userId,
+        modified_by: 'user_id',
         journey: 'endorsement',
         document_type: 'endorsement_supporting_documents',
         document_list: [

@@ -20,8 +20,7 @@ const Feed = () => {
 
       <div>
         <FileUpload
-          proposalId="your-proposal-id"
-          userId="your-user-id"
+          proposalId="0b9d71cd-bf8d-4cea-bf7e-7a0226a91bd5"
           onUploadSuccess={handleUploadSuccess}
           onUploadError={handleUploadError}
         />
