@@ -44,6 +44,10 @@ const Home = () => {
     navigate(-1);
   }
 
+  const navigateToEducate = () => {
+    navigate('/educate');
+  }
+
   const toggleDrawer = (open: any) => (event: any) => {
     if (
       event &&
@@ -126,6 +130,7 @@ const Home = () => {
           </Box>
           <Button
             variant="contained"
+            onClick={navigateToEducate}
             sx={{
               ml: "auto",
               backgroundColor: "#000",

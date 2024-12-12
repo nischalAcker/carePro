@@ -1,0 +1,210 @@
+.educate-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.back-nav {
+    width: 100%;
+    height: 84px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+}
+
+.educate-content {
+  padding: 0px 20px;
+}
+
+.educate-heading {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38.4px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.educate-paragraph {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: left;
+}
+  
+.cta-container {
+    width: 100%;
+    padding: 12px 20px 20px 20px
+  }
+  
+  .cta-button {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #121212;
+    border: none;
+    color: white;
+    font-family: Euclid Circular B;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 100;
+  }
+  
+  .cta-button:hover {
+    background-color: #1f2937;
+  }
+  
+  .bottom-sheet-handle {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 8px;
+  }
+  
+  .bottom-handle {
+    width: 110px;
+    height: 5px;
+    border-radius: 100px;
+    background: rgba(4, 2, 34, 1);
+  }
+  
+  .educate-footer {
+    background: #FFFFFF;
+  }
+  
+  .progress-bar {
+    width: 60%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: rgba(194, 37, 92, 1);
+    transition: width 0.3s ease;
+  }
+
+/* style.css */
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 16px 0;
+    padding: 16px;
+    text-align: left;
+    box-shadow: 0px 9px 19px 0px rgba(0, 0, 0, 0.1), 0px 35px 35px 0px rgba(0, 0, 0, 0.09);
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    height: 196px;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .card.gradient-bg {
+    background: linear-gradient(180deg, #EBFBEE 0%, #FFFFFF 100%);
+  }
+  
+  
+  .card:nth-of-type(2n) {
+    background: linear-gradient(360deg, #EBFBEE 0%, #FFFFFF 100%);
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px dotted rgba(231, 231, 240, 1);
+    cursor: pointer;
+  }
+  
+  .card-icon-container {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-icon-container:not(:first-of-type) {
+    margin-left: -16px; /* Adjust this value to control the overlap */
+    z-index: 1;
+  }
+  
+  .card-icon-container:not(:first-of-type):nth-of-type(2) {
+    z-index: 2;
+  }
+  
+  .card-icon-container:not(:first-of-type):nth-of-type(3) {
+    z-index: 3;
+  }
+  
+  .card-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .card-title {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    margin-left: 12px;
+  }
+  
+  .card-pointers {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .card-pointer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 12px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .card-pointer.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .tick-mark {
+    color: green;
+    margin-right: 8px;
+  }
+  
+  /* Stacking cards */
+  .card + .card {
+    margin-top: -45%; /* Adjust this value to control the overlap */
+  }
+  
+
+  .cta-button:disabled {
+    background-color: rgba(206, 209, 219, 1);
+  }
