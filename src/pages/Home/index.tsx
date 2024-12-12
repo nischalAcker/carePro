@@ -2,13 +2,39 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { SwipeableDrawer, Box, Button, Avatar } from "@mui/material";
 
 import CareIcon from '../../icons/care';
 import ChevronLeft from '../../icons/chevronLeft';
 import DocumentIcon from '../../icons/document';
 import PersonalizeIcon from '../../icons/personalize';
 import './style.css';
+import styled from 'styled-components';
+import ProfileIcon from '../../icons/profile';
+import AddCircleIcon from '../../icons/addCircle';
+
+const Card = styled(Box)({
+  width: 240,
+  height: '180px',
+  border: '1px solid rgba(231, 231, 240, 1)',
+  borderRadius: "12px",
+  padding: "16px",
+  backgroundColor: "#fff",
+  boxShadow: '-1px 5px 12px 0px rgba(0, 0, 0, 0.1)'
+
+});
+
+const AddCard = styled(Box)({
+  width: 240,
+  height: '180px',
+  border: '1px solid rgba(231, 231, 240, 1)',
+  borderRadius: "12px",
+  padding: "16px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  backgroundColor: "#fff",
+});
 
 const Home = () => {
   const navigate = useNavigate();
@@ -30,7 +56,112 @@ const Home = () => {
   };
 
   const DrawerContent = () => (
-    <span>&nbsp;</span>
+    <Box sx={{ padding: '8px 20px'}}>
+      <div className="drawer-notch" />
+      {/* Header Section */}
+      <div style={{ marginBottom: '16px'}}>
+        <ProfileIcon />
+      </div>
+      <h5 className='drawer-heading'>
+        Get started
+      </h5>
+      <p className="drawer-text-content">
+        Build a health profile that’s uniquely yours, for you and your family.
+      </p>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          gap: '8px',
+          width: '100%',
+          paddingBottom: '16px',
+          paddingLeft: '8px',
+          paddingRight: '8px',
+          overflowX: 'auto'
+        }}>
+        <Card>
+          <Box sx={{
+            width: '200px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            marginBottom: '16px',
+          }}>
+            <Avatar
+              src="/profile.png"
+              alt="User Image"
+              sx={{ width: 32, height: 32, mr: 2 }}
+            />
+            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start'}}>
+              <h5
+                style={{
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  textAlign: 'left',
+                  fontSize: '16px'
+                }}
+              >
+                Sanjana Saha
+              </h5>
+              <p style={{
+                fontSize: '12px',
+                fontWeight: 400,
+                lineHeight: '18px',
+                textAlign: 'left'
+              }}>
+                Female, 26
+              </p>
+            </Box>
+          </Box>
+          <Box sx={{ marginBottom: '16px' }}>
+            <p style={{
+              fontSize: '14px',
+              fontWeight: 400,
+              lineHeight: '20px',
+              textAlign: 'left',
+              color: 'rgba(75, 75, 75, 1)',
+            }}>
+              ABHA ID: 3523548327
+            </p>
+          </Box>
+          <Button
+            variant="contained"
+            sx={{
+              ml: "auto",
+              backgroundColor: "#000",
+              color: "#fff",
+              width: '100%',
+              height: '48px',
+              borderRadius: '8px',
+            }}>
+              <p style={{
+                fontFamily: 'Euclid Circular B, sans-serif',
+                fontSize: '14px',
+                fontWeight: 600,
+                lineHeight: '14px',
+                textTransform: 'none',
+              }}>
+                Continue
+              </p>
+          </Button>
+        </Card>
+        <AddCard>
+          <Box sx={{ width: '200px' }}>
+            <AddCircleIcon />
+            <h6 style={{
+              fontWeight: 500,
+              lineHeight: '24px',
+              textAlign: 'left',
+              fontSize: '16px',
+              marginTop: '8px',
+              color: 'rgba(230, 73, 128, 1)'
+            }}>
+              Add family members
+            </h6>
+          </Box>
+        </AddCard>
+      </div>
+    </Box>
   );
 
   return (
