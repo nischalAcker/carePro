@@ -15,7 +15,7 @@ export interface UploadResponse {
 }
 
 const MAX_FILE_SIZE = 15 * 1024 * 1024; // 10MB in bytes
-const ALLOWED_TYPES = ['application/pdf'];
+//const ALLOWED_TYPES = ['application/pdf'];
 
 const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, onUploadError }) => {
   const [file, setFile] = useState<File | null>(null);
@@ -23,13 +23,16 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, on
   const [progress, setProgress] = useState<number>(0);
 
   const validateFile = (file: File): boolean => {
-    if (!ALLOWED_TYPES.includes(file.type)) {
+    // Check if it's a PDF by file extension regardless of MIME type
+    const isPDF = file.name.toLowerCase().endsWith('.pdf');
+
+    if (!isPDF) {
       alert('Only PDF files are allowed');
       return false;
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      alert('File size should not exceed 10MB');
+      alert('File size should not exceed 15MB');
       return false;
     }
 
@@ -67,7 +70,10 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, on
       };
 
       const formData = new FormData();
-      formData.append('documentGroupCreateRequest', JSON.stringify(documentRequest));
+      formData.append(
+        'documentGroupCreateRequest',
+        new Blob([JSON.stringify(documentRequest)], { type: 'application/json' }),
+      );
       formData.append('documents', file);
 
       const response = await fetch(
@@ -75,9 +81,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ proposalId, onUploadSuccess, on
         {
           method: 'POST',
           body: formData,
-          headers: {
-            Accept: 'application/json',
-          },
         },
       );
 
