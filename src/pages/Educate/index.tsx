@@ -47,7 +47,7 @@ const Step1 = ({ nextStep, progress }: { nextStep: any, progress: any}) => {
           <button onClick={goBack} className="back-button">
             <ChevronLeft className="back-icon" />
           </button>
-          <div className="progress-bar">
+          <div className="progress-educate-bar">
             <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
         </div>
@@ -84,7 +84,6 @@ const Step2 = ({ nextStep, prevStep, progress  }: { nextStep: any, prevStep: any
     const [loadedCards, setLoadedCards] = useState<number[]>([]);
     const [gradientCards, setGradientCards] = useState<number[]>([]);
 
-   
     useEffect(() => {
         if (currentPointerIndex < cards[currentCardIndex].pointers.length - 1 && loadedCards.length <= 3) {
           const timer = setTimeout(() => {
@@ -142,7 +141,7 @@ const Step2 = ({ nextStep, prevStep, progress  }: { nextStep: any, prevStep: any
           <button onClick={prevStep} className="back-button">
             <ChevronLeft className="back-icon" />
           </button>
-          <div className="progress-bar">
+          <div className="progress-educate-bar">
             <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
         </div>
@@ -175,6 +174,16 @@ const Step2 = ({ nextStep, prevStep, progress  }: { nextStep: any, prevStep: any
     )
 }
 
+const pointers = [
+  'Walks regularly',
+  'Has a poor sleep cycle',
+  'Frequently drinks alcohol',
+  'Actively socializes with friends',
+  'Enjoys traveling',
+  'Maintains a stable career',
+  'Is father to a pet dog'
+]
+
 const Step3 = ({ prevStep, progress }: {  prevStep: any, progress: number }) => {
     const navigate = useNavigate();
 
@@ -195,7 +204,7 @@ const Step3 = ({ prevStep, progress }: {  prevStep: any, progress: number }) => 
             <button onClick={prevStep} className="back-button">
               <ChevronLeft className="back-icon" />
             </button>
-            <div className="progress-bar">
+            <div className="progress-educate-bar">
              <div className="progress" style={{ width: `${progress}%` }}></div>
             </div>
           </div>
@@ -206,33 +215,49 @@ const Step3 = ({ prevStep, progress }: {  prevStep: any, progress: number }) => 
                 lineHeight: '32px',
                 textAlign: 'left',
             }}>
-              This is what we know about you
+              Thanks! We’ve made a detailed persona for you now
             </p>
             <div style={{
-              background: 'linear-gradient(90deg, #EFE9FB 0%, #FFF2E6 100%)',
+              background: 'linear-gradient(180deg, #EBFBEE 0%, #FFFFFF 100%)',
+              boxShadow: '0px 9px 19px 0px #0000001A',
               marginTop: 32,
               width: 320,
-              height: 84,
               padding: '20px',
               borderRadius: '16px',
               display: 'flex',
+              flexDirection: 'column',
               gap: '12px'
             }}>
-              <img src='/sparkle.png' alt="sparkle" style={{ width: 32, height: 32 }} />
-              <div style={{ textAlign: 'left'}}>
-                <p style={{
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  lineHeight: '20px',
-                }}>
-                  This is how we know you now
-                </p>
-                <p style={{
-                    fontSize: '14px',
-                    lineHeight: '20px',
-                    fontWeight: 400,
-                }}>Overall summary analysis</p>
+              <div style={{
+                display: 'flex',
+                gap: '12px',
+                width: '100%',
+                height: '48px',
+                paddingBottom: '20px',
+                borderBottom: '1px dotted #E7E7F0'
+                }}
+              >
+                <img src='/sparkle.png' alt="sparkle" style={{ width: 32, height: 32 }} />
+                <div style={{ textAlign: 'left'}}>
+                  <p style={{
+                    fontSize: '16px',
+                    fontWeight: '500',
+                    lineHeight: '24px',
+                    margin: '0px',
+                  }}>
+                    A glimpse about you
+                  </p>
+                </div>
               </div>
+              <ul className="card-pointers" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {
+                pointers.map((pointer: any, idx: any) => (
+                  <li key={idx} className="card-pointer visible">
+                    <GreenTickIcon /> {pointer}
+                  </li>
+               ))
+              }
+              </ul>
              </div> 
           </div>
           <footer className='educate-footer'>

@@ -145,6 +145,8 @@ const Home = () => {
                 fontWeight: 600,
                 lineHeight: '14px',
                 textTransform: 'none',
+                color: '#FFFFFF',
+                margin: '0px',
               }}>
                 Continue
               </p>

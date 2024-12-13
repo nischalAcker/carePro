@@ -3,6 +3,7 @@ import './feedNegativeStyle.css'
 import FileUpload from '../../components/FileUpload';
 import ChevronLeft from '../../icons/chevronLeft';
 import { useNavigate } from 'react-router-dom';
+import { East } from '@mui/icons-material';
 
 
 const HealthStatsCard = () => {
@@ -79,17 +80,57 @@ const FeedNegative = ({
         </div>
       </div>
       <div className='feed-negative-content'>
-        <h1 className='feed-negative-heading'>Your regular activity</h1>
+        <h1 className='feed-negative-heading' style={{ marginBottom: '16px' }}>Your regular activity</h1>
         <HealthStatsCard />
+        <div style={{ width: '100%', filter: 'blur(5px)' }}>
+          <h1 className='feed-negative-heading'>Your health</h1>
+          <h3 className='feed-negative-subheading'>See your personalised health data here</h3>
+        <div />
+        </div>  
         <FileUpload
           proposalId="0b9d71cd-bf8d-4cea-bf7e-7a0226a91bd5"
           onUploadSuccess={handleUploadSuccess}
           onUploadError={handleUploadError}
         />
-      </div>
-      <div className='feed-footer'>
-        <img src='/bottom-navigation.png' alt='bottom-navigation' />
-      </div>
+        <div style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+          filter: 'blur(5px)' 
+        }}>
+          <h1 className='feed-negative-heading'>Your report analysis</h1>
+          <div className='feed-card'>
+          <div className='feed-card-header'>
+            <h3 style={{ margin: '0px'}}>Cholesterol profile</h3>
+            <East />
+          </div>
+          <p style={{
+            margin: '0px',
+            textAlign: 'left',
+            fontSize: '14px',
+            fontWeight: 400,
+            lineHeight: '20px',
+          }}>Needs attention</p>
+          <div
+            style={{
+              marginTop: '16px',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+          >
+            <span className='dot-container dot-container-green'><span className='dot dot-green'></span>2 good</span>
+            <span className='dot-container dot-container-yellow'><span className='dot dot-yellow'></span>1 borderline</span>
+            <span className='dot-container dot-container-red'><span className='dot dot-red'></span>2 poor</span>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div className='feed-footer'>
+          <img src='/bottom-navigation.png' alt='bottom-navigation' />
+        </div>
     </div>
   )
 }
