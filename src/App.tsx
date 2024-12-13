@@ -11,9 +11,11 @@ import NotFound from './pages/NotFound';
 import Educate from './pages/Educate';
 import Feed from './pages/Feed';
 import Guide from './pages/Guide';
+import Analysis from './pages/Analysis';
 
 import './App.css'
 import './fonts.css';
+
 
 const MEMBER_ID = '0b9d71cd-bf8d-4cea-bf7e-7a0226a91bd5';
 
@@ -42,6 +44,7 @@ const App = () => {
           <Route path="/educate" element={<Educate />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/guide" element={<Guide />} />
+          <Route path="/analysis" element={<Analysis />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Box>

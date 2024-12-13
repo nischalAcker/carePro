@@ -43,6 +43,10 @@ const FeedPositive = () => {
     navigate('/guide');
   }
 
+  const navigateToAnalysis = () => {
+    navigate('/analysis');
+  }
+
   return (
     <div className='feed-positive-container'>
       <div className="back-nav">
@@ -96,7 +100,7 @@ const FeedPositive = () => {
         paddingBottom: '20px',
       }}>
         <h1 className='feed-negative-heading'>Your report analysis</h1>
-        <div className='feed-card'>
+        <div className='feed-card' style={{ cursor: 'pointer' }} onClick={navigateToAnalysis}>
           <div className='feed-card-header'>
             <h3 style={{ margin: '0px'}}>Cholesterol profile</h3>
             <East />
