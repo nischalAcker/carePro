@@ -92,7 +92,7 @@ const Home = () => {
             marginBottom: '16px',
           }}>
             <Avatar
-              src="/profile.png"
+              src="/profile-dp.png"
               alt="User Image"
               sx={{ width: 32, height: 32, mr: 2 }}
             />
@@ -105,7 +105,7 @@ const Home = () => {
                   fontSize: '16px'
                 }}
               >
-                Sanjana Saha
+                Shivam Agarwal
               </h5>
               <p style={{
                 fontSize: '12px',
@@ -113,7 +113,7 @@ const Home = () => {
                 lineHeight: '18px',
                 textAlign: 'left'
               }}>
-                Female, 26
+                Male, 30
               </p>
             </Box>
           </Box>

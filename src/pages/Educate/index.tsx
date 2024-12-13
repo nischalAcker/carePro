@@ -60,7 +60,7 @@ const Step1 = ({ nextStep, progress }: { nextStep: any, progress: any}) => {
               alignItems: 'center'
             }}
         >
-            <h1 className='educate-heading'>Glad, to have you with us <span style={{ color: 'rgba(230, 73, 128, 1)'}}>Sanjana</span></h1>
+            <h1 className='educate-heading'>Glad, to have you with us <span style={{ color: 'rgba(230, 73, 128, 1)'}}>Shivam</span></h1>
             <p className='educate-paragraph'><span style={{ fontWeight: 700}}>Let’s set your health profile, we have linked your fitness tracker</span>, social media to give better insights and guidance, just for you</p>
         </div>
         <footer className='educate-footer'>
@@ -155,7 +155,7 @@ const Step2 = ({ nextStep, prevStep, progress  }: { nextStep: any, prevStep: any
               marginBottom: '32px',
             }}
            >
-            All in one place!
+            All in one place
            </h1>
            {renderCards}
         </div>
