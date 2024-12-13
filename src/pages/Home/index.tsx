@@ -224,7 +224,7 @@ const Home = () => {
             </div>
             <div className="text-content">
               <h2>Personalised for you</h2>
-              <p>Linked with your fitness, blah blah blahblah</p>
+              <p>Linked with your data to give unique guidance, only for you.</p>
             </div>
           </div>
         </div>
@@ -263,7 +263,7 @@ const Home = () => {
         }}
         ModalProps={{
           BackdropProps: {
-            style: { display: "none" },
+            style: { opacity: 0.8 },
           },
         }}
       >
