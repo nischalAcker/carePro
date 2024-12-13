@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -21,6 +22,7 @@ const MEMBER_ID = '0b9d71cd-bf8d-4cea-bf7e-7a0226a91bd5';
 
 const App = () => {
   const [memberData, setMemberData] = useState();
+  const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
 
   const getData = () => {
     fetch(`http://health-assessment-questions-service-dev.internal.ackodev.com/user/profile?member_id=${MEMBER_ID}`)
@@ -42,7 +44,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/educate" element={<Educate />} />
-          <Route path="/feed" element={<Feed />} />
+          <Route path="/feed" element={<Feed uploadedFiles={uploadedFiles} setUploadedFiles={setUploadedFiles} />} />
           <Route path="/guide" element={<Guide />} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="*" element={<NotFound />} />

@@ -6,8 +6,7 @@ import FeedNegative from './FeedNegative';
 import Loader from '../../components/Loader';
 
 
-const Feed = () => {
-  const [uploadedFiles, setUploadedFiles] = useState<any[]>([]);
+const Feed = ({ uploadedFiles, setUploadedFiles } : { uploadedFiles: any[], setUploadedFiles: any }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const areFilesUploaded = uploadedFiles.length > 0;
@@ -16,8 +15,8 @@ const Feed = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setUploadedFiles((prevFiles) => [...prevFiles, files]);
-    }, 10000);
+      setUploadedFiles((prevFiles: any) => [...prevFiles, files]);
+    }, 20000);
   };
 
   const handleUploadError = (error: Error): void => {
