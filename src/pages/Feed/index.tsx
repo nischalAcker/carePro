@@ -17,7 +17,7 @@ const Feed = () => {
     setTimeout(() => {
       setLoading(false);
       setUploadedFiles((prevFiles) => [...prevFiles, files]);
-    }, 6000);
+    }, 10000);
   };
 
   const handleUploadError = (error: Error): void => {
