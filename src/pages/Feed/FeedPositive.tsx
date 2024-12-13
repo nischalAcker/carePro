@@ -4,6 +4,7 @@ import ChevronLeft from '../../icons/chevronLeft';
 import './FeedPositiveStyle.css'
 import { useNavigate } from 'react-router-dom';
 import { East } from '@mui/icons-material';
+import { useEffect, useState } from 'react';
 
 const HealthStatsCard = () => {
   const stats = [
@@ -31,8 +32,11 @@ const HealthStatsCard = () => {
   );
 };
 
+const MEMBER_ID = '0b9d71cd-bf8d-4cea-bf7e-7a0226a91bd5';
 
 const FeedPositive = () => {
+  const [analysisData, setAnalysisData] = useState()
+
   const navigate = useNavigate();
   
   const goBack = () => {
@@ -40,13 +44,38 @@ const FeedPositive = () => {
   }
 
   const navigateToGuide = () => {
-    navigate('/guide');
+    navigate('/guide', {
+      state: {
+        data: analysisData
+      }
+    });
   }
 
   const navigateToAnalysis = () => {
-    navigate('/analysis');
+    navigate('/analysis', {
+      state: {
+        data: analysisData
+      }
+    });
   }
 
+  const getAnalysis = () => {
+    fetch(`http://192.168.234.149:5010/health/journey/analysis/report?member_id=${MEMBER_ID}`)
+      .then(response => response.json())
+      .then(json => {
+        console.log('response: ', json);
+        setAnalysisData(json);
+      });
+  }
+
+  useEffect(() => {
+    if (!analysisData) {
+      getAnalysis()
+    }
+  }, [analysisData]);
+
+
+  console.log('analysis data: ', analysisData)
   return (
     <div className='feed-positive-container'>
       <div className="back-nav">
